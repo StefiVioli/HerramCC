@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+</style>
+<body>
+<h5>Inserte el codigo aqui para ser evaluado y obtener su CC<br>
+<textarea id="cod" rows="10" cols="100"></textarea><br>
+<button id="ejecutar" type="button" onclick="mostrarCC()">Calcular Complejidad Ciclomatica</button><br>
+
+
+<label>Complejidad Ciclomatica</label> <input class="tab" id="cc"  disabled></input><br>
+
+</body>
+</html>
+<script>
+
+
+function mostrarCC()
+{
+
+
+	var txt = document.getElementById("cod").value;
+	if(txt.length == 0) {alert("Para continuar ingrese un codigo"); return}
+
+	txt = txt.toLowerCase();
+	var cc = calcularCC(txt);
+	document.getElementById("cc").value = cc;
+	
+}
+
+function calcularCC(s)
+{
+	var contar = 0;
+	
+	contar+=s.split('switch').length - 1;
+	contar+=s.split('else').length - 1;
+	contar+=s.split('||').length - 1;
+	contar+=s.split('if').length - 1;
+	contar+=s.split('for').length - 1;
+	contar+=s.split('while').length - 1;
+	contar+=s.split('&&').length - 1;
+	return contar+1;
+}
+
+
+</script>
